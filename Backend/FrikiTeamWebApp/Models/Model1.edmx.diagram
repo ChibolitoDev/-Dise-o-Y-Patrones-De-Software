@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9c341db309ed42ae866f9f7d2500fbe1" Name="Diagram1">
+        <EntityTypeShape EntityType="FrikiTeamBDModel.Calle" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FrikiTeamBDModel.Cliente" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FrikiTeamBDModel.CodigoEvento" Width="1.5" PointX="12" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FrikiTeamBDModel.Distrito" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FrikiTeamBDModel.Evento" Width="1.5" PointX="9.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FrikiTeamBDModel.Evento_Usuario" Width="1.5" PointX="9.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FrikiTeamBDModel.Evento_Usuario_Codigo" Width="1.5" PointX="14.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FrikiTeamBDModel.NumeroCasa" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FrikiTeamBDModel.Organizador" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="FrikiTeamBDModel.IDCalle" ManuallyRouted="false" />
+        <AssociationConnector Association="FrikiTeamBDModel.IDNumero" ManuallyRouted="false" />
+        <AssociationConnector Association="FrikiTeamBDModel.IDCliente" ManuallyRouted="false" />
+        <AssociationConnector Association="FrikiTeamBDModel.IDDistrito" ManuallyRouted="false" />
+        <AssociationConnector Association="FrikiTeamBDModel.IDCodigoEvento" ManuallyRouted="false" />
+        <AssociationConnector Association="FrikiTeamBDModel.IDEvento" ManuallyRouted="false" />
+        <AssociationConnector Association="FrikiTeamBDModel.IDDistrito1" ManuallyRouted="false" />
+        <AssociationConnector Association="FrikiTeamBDModel.IDDistrito2" ManuallyRouted="false" />
+        <AssociationConnector Association="FrikiTeamBDModel.IDEvento1" ManuallyRouted="false" />
+        <AssociationConnector Association="FrikiTeamBDModel.IDOrganizador" ManuallyRouted="false" />
+        <AssociationConnector Association="FrikiTeamBDModel.IDEvento_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

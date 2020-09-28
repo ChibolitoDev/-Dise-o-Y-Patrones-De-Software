@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FrikiTeamBDModelStoreContainer" CdmEntityContainer="FrikiTeamBDEntities6">
+    <EntitySetMapping Name="Calle">
+      <EntityTypeMapping TypeName="FrikiTeamBDModel.Calle">
+        <MappingFragment StoreEntitySet="Calle">
+          <ScalarProperty Name="IDCalle" ColumnName="IDCalle" />
+          <ScalarProperty Name="IDNumero" ColumnName="IDNumero" />
+          <ScalarProperty Name="Ncalle" ColumnName="Ncalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="FrikiTeamBDModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+          <ScalarProperty Name="NCliente" ColumnName="NCliente" />
+          <ScalarProperty Name="ApeCliente" ColumnName="ApeCliente" />
+          <ScalarProperty Name="Edad_Cliente" ColumnName="Edad_Cliente" />
+          <ScalarProperty Name="NTelefono" ColumnName="NTelefono" />
+          <ScalarProperty Name="Correo_Cliente" ColumnName="Correo_Cliente" />
+          <ScalarProperty Name="Contraseña_Cliente" ColumnName="Contraseña_Cliente" />
+          <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodigoEvento">
+      <EntityTypeMapping TypeName="FrikiTeamBDModel.CodigoEvento">
+        <MappingFragment StoreEntitySet="CodigoEvento">
+          <ScalarProperty Name="IDCodigo" ColumnName="IDCodigo" />
+          <ScalarProperty Name="NumEvento" ColumnName="NumEvento" />
+          <ScalarProperty Name="IDEvento" ColumnName="IDEvento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Distrito">
+      <EntityTypeMapping TypeName="FrikiTeamBDModel.Distrito">
+        <MappingFragment StoreEntitySet="Distrito">
+          <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+          <ScalarProperty Name="NDistrito" ColumnName="NDistrito" />
+          <ScalarProperty Name="IDCalle" ColumnName="IDCalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evento">
+      <EntityTypeMapping TypeName="FrikiTeamBDModel.Evento">
+        <MappingFragment StoreEntitySet="Evento">
+          <ScalarProperty Name="IDEvento" ColumnName="IDEvento" />
+          <ScalarProperty Name="DescripcionEvento" ColumnName="DescripcionEvento" />
+          <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+          <ScalarProperty Name="PrecioEntrada" ColumnName="PrecioEntrada" />
+          <ScalarProperty Name="NCupos" ColumnName="NCupos" />
+          <ScalarProperty Name="NEvento" ColumnName="NEvento" />
+          <ScalarProperty Name="IDOrganizador" ColumnName="IDOrganizador" />
+          <ScalarProperty Name="FechaEvento" ColumnName="FechaEvento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evento_Usuario">
+      <EntityTypeMapping TypeName="FrikiTeamBDModel.Evento_Usuario">
+        <MappingFragment StoreEntitySet="Evento_Usuario">
+          <ScalarProperty Name="IDEvento_Usuario" ColumnName="IDEvento_Usuario" />
+          <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+          <ScalarProperty Name="IDEvento" ColumnName="IDEvento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evento_Usuario_Codigo">
+      <EntityTypeMapping TypeName="FrikiTeamBDModel.Evento_Usuario_Codigo">
+        <MappingFragment StoreEntitySet="Evento_Usuario_Codigo">
+          <ScalarProperty Name="IEUC" ColumnName="IEUC" />
+          <ScalarProperty Name="IDEvento_Usuario" ColumnName="IDEvento_Usuario" />
+          <ScalarProperty Name="IDCodigoEvento" ColumnName="IDCodigoEvento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NumeroCasa">
+      <EntityTypeMapping TypeName="FrikiTeamBDModel.NumeroCasa">
+        <MappingFragment StoreEntitySet="NumeroCasa">
+          <ScalarProperty Name="IDNumero" ColumnName="IDNumero" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organizador">
+      <EntityTypeMapping TypeName="FrikiTeamBDModel.Organizador">
+        <MappingFragment StoreEntitySet="Organizador">
+          <ScalarProperty Name="IDOrganizador" ColumnName="IDOrganizador" />
+          <ScalarProperty Name="NOrganizador" ColumnName="NOrganizador" />
+          <ScalarProperty Name="ApeOrganizador" ColumnName="ApeOrganizador" />
+          <ScalarProperty Name="Edad_Organizador" ColumnName="Edad_Organizador" />
+          <ScalarProperty Name="NTelefono" ColumnName="NTelefono" />
+          <ScalarProperty Name="Correo_Organizador" ColumnName="Correo_Organizador" />
+          <ScalarProperty Name="Contraseña_Organizador" ColumnName="Contraseña_Organizador" />
+          <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+          <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

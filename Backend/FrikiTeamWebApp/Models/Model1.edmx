@@ -1,0 +1,708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FrikiTeamBDModel.Store" Provider="Npgsql" ProviderManifestToken="12.4" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Calle">
+          <Key>
+            <PropertyRef Name="IDCalle" />
+          </Key>
+          <Property Name="IDCalle" Type="int4" Nullable="false" />
+          <Property Name="IDNumero" Type="int4" Nullable="false" />
+          <Property Name="Ncalle" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="IDCliente" Type="int4" Nullable="false" />
+          <Property Name="NCliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApeCliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Edad_Cliente" Type="int4" Nullable="false" />
+          <Property Name="NTelefono" Type="int4" Nullable="false" />
+          <Property Name="Correo_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contraseña_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDDistrito" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodigoEvento">
+          <Key>
+            <PropertyRef Name="IDCodigo" />
+          </Key>
+          <Property Name="IDCodigo" Type="int4" Nullable="false" />
+          <Property Name="NumEvento" Type="int4" Nullable="false" />
+          <Property Name="IDEvento" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="IDDistrito" />
+          </Key>
+          <Property Name="IDDistrito" Type="int4" Nullable="false" />
+          <Property Name="NDistrito" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDCalle" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="IDEvento" />
+          </Key>
+          <Property Name="IDEvento" Type="int4" Nullable="false" />
+          <Property Name="DescripcionEvento" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IDDistrito" Type="int4" Nullable="false" />
+          <Property Name="PrecioEntrada" Type="int4" Nullable="false" />
+          <Property Name="NCupos" Type="int4" />
+          <Property Name="NEvento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDOrganizador" Type="int4" Nullable="false" />
+          <Property Name="FechaEvento" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evento_Usuario">
+          <Key>
+            <PropertyRef Name="IDEvento_Usuario" />
+          </Key>
+          <Property Name="IDEvento_Usuario" Type="int4" Nullable="false" />
+          <Property Name="IDCliente" Type="int4" Nullable="false" />
+          <Property Name="IDEvento" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evento_Usuario_Codigo">
+          <Key>
+            <PropertyRef Name="IEUC" />
+          </Key>
+          <Property Name="IEUC" Type="int4" Nullable="false" />
+          <Property Name="IDEvento_Usuario" Type="int4" Nullable="false" />
+          <Property Name="IDCodigoEvento" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NumeroCasa">
+          <Key>
+            <PropertyRef Name="IDNumero" />
+          </Key>
+          <Property Name="IDNumero" Type="int4" Nullable="false" />
+          <Property Name="Numero" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organizador">
+          <Key>
+            <PropertyRef Name="IDOrganizador" />
+          </Key>
+          <Property Name="IDOrganizador" Type="int4" Nullable="false" />
+          <Property Name="NOrganizador" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApeOrganizador" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Edad_Organizador" Type="int4" Nullable="false" />
+          <Property Name="NTelefono" Type="int4" Nullable="false" />
+          <Property Name="Correo_Organizador" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contraseña_Organizador" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDDistrito" Type="int4" Nullable="false" />
+          <Property Name="Calificacion" Type="int4" />
+        </EntityType>
+        <Association Name="IDCalle">
+          <End Role="Calle" Type="Self.Calle" Multiplicity="1" />
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calle">
+              <PropertyRef Name="IDCalle" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="IDCalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDCliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Evento_Usuario" Type="Self.Evento_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IDCliente" />
+            </Principal>
+            <Dependent Role="Evento_Usuario">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDCodigoEvento">
+          <End Role="CodigoEvento" Type="Self.CodigoEvento" Multiplicity="1" />
+          <End Role="Evento_Usuario_Codigo" Type="Self.Evento_Usuario_Codigo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodigoEvento">
+              <PropertyRef Name="IDCodigo" />
+            </Principal>
+            <Dependent Role="Evento_Usuario_Codigo">
+              <PropertyRef Name="IDCodigoEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDDistrito">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="IDDistrito" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="IDDistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDDistrito1">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Organizador" Type="Self.Organizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="IDDistrito" />
+            </Principal>
+            <Dependent Role="Organizador">
+              <PropertyRef Name="IDDistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDDistrito2">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="IDDistrito" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IDDistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDEvento">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="CodigoEvento" Type="Self.CodigoEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="IDEvento" />
+            </Principal>
+            <Dependent Role="CodigoEvento">
+              <PropertyRef Name="IDEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDEvento1">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="Evento_Usuario" Type="Self.Evento_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="IDEvento" />
+            </Principal>
+            <Dependent Role="Evento_Usuario">
+              <PropertyRef Name="IDEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDEvento_Usuario">
+          <End Role="Evento_Usuario" Type="Self.Evento_Usuario" Multiplicity="1" />
+          <End Role="Evento_Usuario_Codigo" Type="Self.Evento_Usuario_Codigo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento_Usuario">
+              <PropertyRef Name="IDEvento_Usuario" />
+            </Principal>
+            <Dependent Role="Evento_Usuario_Codigo">
+              <PropertyRef Name="IDEvento_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDNumero">
+          <End Role="NumeroCasa" Type="Self.NumeroCasa" Multiplicity="1" />
+          <End Role="Calle" Type="Self.Calle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NumeroCasa">
+              <PropertyRef Name="IDNumero" />
+            </Principal>
+            <Dependent Role="Calle">
+              <PropertyRef Name="IDNumero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDOrganizador">
+          <End Role="Organizador" Type="Self.Organizador" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizador">
+              <PropertyRef Name="IDOrganizador" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IDOrganizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FrikiTeamBDModelStoreContainer">
+          <EntitySet Name="Calle" EntityType="Self.Calle" Schema="public" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="public" store:Type="Tables" />
+          <EntitySet Name="CodigoEvento" EntityType="Self.CodigoEvento" Schema="public" store:Type="Tables" />
+          <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="public" store:Type="Tables" />
+          <EntitySet Name="Evento" EntityType="Self.Evento" Schema="public" store:Type="Tables" />
+          <EntitySet Name="Evento_Usuario" EntityType="Self.Evento_Usuario" Schema="public" store:Type="Tables" />
+          <EntitySet Name="Evento_Usuario_Codigo" EntityType="Self.Evento_Usuario_Codigo" Schema="public" store:Type="Tables" />
+          <EntitySet Name="NumeroCasa" EntityType="Self.NumeroCasa" Schema="public" store:Type="Tables" />
+          <EntitySet Name="Organizador" EntityType="Self.Organizador" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="IDCalle" Association="Self.IDCalle">
+            <End Role="Calle" EntitySet="Calle" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="IDCliente" Association="Self.IDCliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Evento_Usuario" EntitySet="Evento_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="IDCodigoEvento" Association="Self.IDCodigoEvento">
+            <End Role="CodigoEvento" EntitySet="CodigoEvento" />
+            <End Role="Evento_Usuario_Codigo" EntitySet="Evento_Usuario_Codigo" />
+          </AssociationSet>
+          <AssociationSet Name="IDDistrito" Association="Self.IDDistrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="IDDistrito1" Association="Self.IDDistrito1">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="Organizador" EntitySet="Organizador" />
+          </AssociationSet>
+          <AssociationSet Name="IDDistrito2" Association="Self.IDDistrito2">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="IDEvento" Association="Self.IDEvento">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="CodigoEvento" EntitySet="CodigoEvento" />
+          </AssociationSet>
+          <AssociationSet Name="IDEvento1" Association="Self.IDEvento1">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Evento_Usuario" EntitySet="Evento_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="IDEvento_Usuario" Association="Self.IDEvento_Usuario">
+            <End Role="Evento_Usuario" EntitySet="Evento_Usuario" />
+            <End Role="Evento_Usuario_Codigo" EntitySet="Evento_Usuario_Codigo" />
+          </AssociationSet>
+          <AssociationSet Name="IDNumero" Association="Self.IDNumero">
+            <End Role="NumeroCasa" EntitySet="NumeroCasa" />
+            <End Role="Calle" EntitySet="Calle" />
+          </AssociationSet>
+          <AssociationSet Name="IDOrganizador" Association="Self.IDOrganizador">
+            <End Role="Organizador" EntitySet="Organizador" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FrikiTeamBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Calle">
+          <Key>
+            <PropertyRef Name="IDCalle" />
+          </Key>
+          <Property Name="IDCalle" Type="Int32" Nullable="false" />
+          <Property Name="IDNumero" Type="Int32" Nullable="false" />
+          <Property Name="Ncalle" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Distrito" Relationship="Self.IDCalle" FromRole="Calle" ToRole="Distrito" />
+          <NavigationProperty Name="NumeroCasa" Relationship="Self.IDNumero" FromRole="Calle" ToRole="NumeroCasa" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="NCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApeCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Edad_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="NTelefono" Type="Int32" Nullable="false" />
+          <Property Name="Correo_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contraseña_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDDistrito" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Evento_Usuario" Relationship="Self.IDCliente" FromRole="Cliente" ToRole="Evento_Usuario" />
+          <NavigationProperty Name="Distrito" Relationship="Self.IDDistrito" FromRole="Cliente" ToRole="Distrito" />
+        </EntityType>
+        <EntityType Name="CodigoEvento">
+          <Key>
+            <PropertyRef Name="IDCodigo" />
+          </Key>
+          <Property Name="IDCodigo" Type="Int32" Nullable="false" />
+          <Property Name="NumEvento" Type="Int32" Nullable="false" />
+          <Property Name="IDEvento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Evento_Usuario_Codigo" Relationship="Self.IDCodigoEvento" FromRole="CodigoEvento" ToRole="Evento_Usuario_Codigo" />
+          <NavigationProperty Name="Evento" Relationship="Self.IDEvento" FromRole="CodigoEvento" ToRole="Evento" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="IDDistrito" />
+          </Key>
+          <Property Name="IDDistrito" Type="Int32" Nullable="false" />
+          <Property Name="NDistrito" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDCalle" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Calle" Relationship="Self.IDCalle" FromRole="Distrito" ToRole="Calle" />
+          <NavigationProperty Name="Cliente" Relationship="Self.IDDistrito" FromRole="Distrito" ToRole="Cliente" />
+          <NavigationProperty Name="Organizador" Relationship="Self.IDDistrito1" FromRole="Distrito" ToRole="Organizador" />
+          <NavigationProperty Name="Evento" Relationship="Self.IDDistrito2" FromRole="Distrito" ToRole="Evento" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="IDEvento" />
+          </Key>
+          <Property Name="IDEvento" Type="Int32" Nullable="false" />
+          <Property Name="DescripcionEvento" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDDistrito" Type="Int32" Nullable="false" />
+          <Property Name="PrecioEntrada" Type="Int32" Nullable="false" />
+          <Property Name="NCupos" Type="Int32" />
+          <Property Name="NEvento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDOrganizador" Type="Int32" Nullable="false" />
+          <Property Name="FechaEvento" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CodigoEvento" Relationship="Self.IDEvento" FromRole="Evento" ToRole="CodigoEvento" />
+          <NavigationProperty Name="Distrito" Relationship="Self.IDDistrito2" FromRole="Evento" ToRole="Distrito" />
+          <NavigationProperty Name="Evento_Usuario" Relationship="Self.IDEvento1" FromRole="Evento" ToRole="Evento_Usuario" />
+          <NavigationProperty Name="Organizador" Relationship="Self.IDOrganizador" FromRole="Evento" ToRole="Organizador" />
+        </EntityType>
+        <EntityType Name="Evento_Usuario">
+          <Key>
+            <PropertyRef Name="IDEvento_Usuario" />
+          </Key>
+          <Property Name="IDEvento_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="IDEvento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.IDCliente" FromRole="Evento_Usuario" ToRole="Cliente" />
+          <NavigationProperty Name="Evento" Relationship="Self.IDEvento1" FromRole="Evento_Usuario" ToRole="Evento" />
+          <NavigationProperty Name="Evento_Usuario_Codigo" Relationship="Self.IDEvento_Usuario" FromRole="Evento_Usuario" ToRole="Evento_Usuario_Codigo" />
+        </EntityType>
+        <EntityType Name="Evento_Usuario_Codigo">
+          <Key>
+            <PropertyRef Name="IEUC" />
+          </Key>
+          <Property Name="IEUC" Type="Int32" Nullable="false" />
+          <Property Name="IDEvento_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="IDCodigoEvento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CodigoEvento" Relationship="Self.IDCodigoEvento" FromRole="Evento_Usuario_Codigo" ToRole="CodigoEvento" />
+          <NavigationProperty Name="Evento_Usuario" Relationship="Self.IDEvento_Usuario" FromRole="Evento_Usuario_Codigo" ToRole="Evento_Usuario" />
+        </EntityType>
+        <EntityType Name="NumeroCasa">
+          <Key>
+            <PropertyRef Name="IDNumero" />
+          </Key>
+          <Property Name="IDNumero" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Calle" Relationship="Self.IDNumero" FromRole="NumeroCasa" ToRole="Calle" />
+        </EntityType>
+        <EntityType Name="Organizador">
+          <Key>
+            <PropertyRef Name="IDOrganizador" />
+          </Key>
+          <Property Name="IDOrganizador" Type="Int32" Nullable="false" />
+          <Property Name="NOrganizador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApeOrganizador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Edad_Organizador" Type="Int32" Nullable="false" />
+          <Property Name="NTelefono" Type="Int32" Nullable="false" />
+          <Property Name="Correo_Organizador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contraseña_Organizador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDDistrito" Type="Int32" Nullable="false" />
+          <Property Name="Calificacion" Type="Int32" />
+          <NavigationProperty Name="Distrito" Relationship="Self.IDDistrito1" FromRole="Organizador" ToRole="Distrito" />
+          <NavigationProperty Name="Evento" Relationship="Self.IDOrganizador" FromRole="Organizador" ToRole="Evento" />
+        </EntityType>
+        <Association Name="IDCalle">
+          <End Role="Calle" Type="Self.Calle" Multiplicity="1" />
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calle">
+              <PropertyRef Name="IDCalle" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="IDCalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDNumero">
+          <End Role="NumeroCasa" Type="Self.NumeroCasa" Multiplicity="1" />
+          <End Role="Calle" Type="Self.Calle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NumeroCasa">
+              <PropertyRef Name="IDNumero" />
+            </Principal>
+            <Dependent Role="Calle">
+              <PropertyRef Name="IDNumero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDCliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Evento_Usuario" Type="Self.Evento_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IDCliente" />
+            </Principal>
+            <Dependent Role="Evento_Usuario">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDDistrito">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="IDDistrito" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="IDDistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDCodigoEvento">
+          <End Role="CodigoEvento" Type="Self.CodigoEvento" Multiplicity="1" />
+          <End Role="Evento_Usuario_Codigo" Type="Self.Evento_Usuario_Codigo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodigoEvento">
+              <PropertyRef Name="IDCodigo" />
+            </Principal>
+            <Dependent Role="Evento_Usuario_Codigo">
+              <PropertyRef Name="IDCodigoEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDEvento">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="CodigoEvento" Type="Self.CodigoEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="IDEvento" />
+            </Principal>
+            <Dependent Role="CodigoEvento">
+              <PropertyRef Name="IDEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDDistrito1">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Organizador" Type="Self.Organizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="IDDistrito" />
+            </Principal>
+            <Dependent Role="Organizador">
+              <PropertyRef Name="IDDistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDDistrito2">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="IDDistrito" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IDDistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDEvento1">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="Evento_Usuario" Type="Self.Evento_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="IDEvento" />
+            </Principal>
+            <Dependent Role="Evento_Usuario">
+              <PropertyRef Name="IDEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDOrganizador">
+          <End Role="Organizador" Type="Self.Organizador" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizador">
+              <PropertyRef Name="IDOrganizador" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IDOrganizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IDEvento_Usuario">
+          <End Role="Evento_Usuario" Type="Self.Evento_Usuario" Multiplicity="1" />
+          <End Role="Evento_Usuario_Codigo" Type="Self.Evento_Usuario_Codigo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento_Usuario">
+              <PropertyRef Name="IDEvento_Usuario" />
+            </Principal>
+            <Dependent Role="Evento_Usuario_Codigo">
+              <PropertyRef Name="IDEvento_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FrikiTeamBDEntities6" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Calle" EntityType="Self.Calle" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="CodigoEvento" EntityType="Self.CodigoEvento" />
+          <EntitySet Name="Distrito" EntityType="Self.Distrito" />
+          <EntitySet Name="Evento" EntityType="Self.Evento" />
+          <EntitySet Name="Evento_Usuario" EntityType="Self.Evento_Usuario" />
+          <EntitySet Name="Evento_Usuario_Codigo" EntityType="Self.Evento_Usuario_Codigo" />
+          <EntitySet Name="NumeroCasa" EntityType="Self.NumeroCasa" />
+          <EntitySet Name="Organizador" EntityType="Self.Organizador" />
+          <AssociationSet Name="IDCalle" Association="Self.IDCalle">
+            <End Role="Calle" EntitySet="Calle" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="IDNumero" Association="Self.IDNumero">
+            <End Role="NumeroCasa" EntitySet="NumeroCasa" />
+            <End Role="Calle" EntitySet="Calle" />
+          </AssociationSet>
+          <AssociationSet Name="IDCliente" Association="Self.IDCliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Evento_Usuario" EntitySet="Evento_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="IDDistrito" Association="Self.IDDistrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="IDCodigoEvento" Association="Self.IDCodigoEvento">
+            <End Role="CodigoEvento" EntitySet="CodigoEvento" />
+            <End Role="Evento_Usuario_Codigo" EntitySet="Evento_Usuario_Codigo" />
+          </AssociationSet>
+          <AssociationSet Name="IDEvento" Association="Self.IDEvento">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="CodigoEvento" EntitySet="CodigoEvento" />
+          </AssociationSet>
+          <AssociationSet Name="IDDistrito1" Association="Self.IDDistrito1">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="Organizador" EntitySet="Organizador" />
+          </AssociationSet>
+          <AssociationSet Name="IDDistrito2" Association="Self.IDDistrito2">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="IDEvento1" Association="Self.IDEvento1">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Evento_Usuario" EntitySet="Evento_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="IDOrganizador" Association="Self.IDOrganizador">
+            <End Role="Organizador" EntitySet="Organizador" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="IDEvento_Usuario" Association="Self.IDEvento_Usuario">
+            <End Role="Evento_Usuario" EntitySet="Evento_Usuario" />
+            <End Role="Evento_Usuario_Codigo" EntitySet="Evento_Usuario_Codigo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FrikiTeamBDModelStoreContainer" CdmEntityContainer="FrikiTeamBDEntities6">
+          <EntitySetMapping Name="Calle">
+            <EntityTypeMapping TypeName="FrikiTeamBDModel.Calle">
+              <MappingFragment StoreEntitySet="Calle">
+                <ScalarProperty Name="IDCalle" ColumnName="IDCalle" />
+                <ScalarProperty Name="IDNumero" ColumnName="IDNumero" />
+                <ScalarProperty Name="Ncalle" ColumnName="Ncalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="FrikiTeamBDModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="NCliente" ColumnName="NCliente" />
+                <ScalarProperty Name="ApeCliente" ColumnName="ApeCliente" />
+                <ScalarProperty Name="Edad_Cliente" ColumnName="Edad_Cliente" />
+                <ScalarProperty Name="NTelefono" ColumnName="NTelefono" />
+                <ScalarProperty Name="Correo_Cliente" ColumnName="Correo_Cliente" />
+                <ScalarProperty Name="Contraseña_Cliente" ColumnName="Contraseña_Cliente" />
+                <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodigoEvento">
+            <EntityTypeMapping TypeName="FrikiTeamBDModel.CodigoEvento">
+              <MappingFragment StoreEntitySet="CodigoEvento">
+                <ScalarProperty Name="IDCodigo" ColumnName="IDCodigo" />
+                <ScalarProperty Name="NumEvento" ColumnName="NumEvento" />
+                <ScalarProperty Name="IDEvento" ColumnName="IDEvento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distrito">
+            <EntityTypeMapping TypeName="FrikiTeamBDModel.Distrito">
+              <MappingFragment StoreEntitySet="Distrito">
+                <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+                <ScalarProperty Name="NDistrito" ColumnName="NDistrito" />
+                <ScalarProperty Name="IDCalle" ColumnName="IDCalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evento">
+            <EntityTypeMapping TypeName="FrikiTeamBDModel.Evento">
+              <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="IDEvento" ColumnName="IDEvento" />
+                <ScalarProperty Name="DescripcionEvento" ColumnName="DescripcionEvento" />
+                <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+                <ScalarProperty Name="PrecioEntrada" ColumnName="PrecioEntrada" />
+                <ScalarProperty Name="NCupos" ColumnName="NCupos" />
+                <ScalarProperty Name="NEvento" ColumnName="NEvento" />
+                <ScalarProperty Name="IDOrganizador" ColumnName="IDOrganizador" />
+                <ScalarProperty Name="FechaEvento" ColumnName="FechaEvento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evento_Usuario">
+            <EntityTypeMapping TypeName="FrikiTeamBDModel.Evento_Usuario">
+              <MappingFragment StoreEntitySet="Evento_Usuario">
+                <ScalarProperty Name="IDEvento_Usuario" ColumnName="IDEvento_Usuario" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="IDEvento" ColumnName="IDEvento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evento_Usuario_Codigo">
+            <EntityTypeMapping TypeName="FrikiTeamBDModel.Evento_Usuario_Codigo">
+              <MappingFragment StoreEntitySet="Evento_Usuario_Codigo">
+                <ScalarProperty Name="IEUC" ColumnName="IEUC" />
+                <ScalarProperty Name="IDEvento_Usuario" ColumnName="IDEvento_Usuario" />
+                <ScalarProperty Name="IDCodigoEvento" ColumnName="IDCodigoEvento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NumeroCasa">
+            <EntityTypeMapping TypeName="FrikiTeamBDModel.NumeroCasa">
+              <MappingFragment StoreEntitySet="NumeroCasa">
+                <ScalarProperty Name="IDNumero" ColumnName="IDNumero" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizador">
+            <EntityTypeMapping TypeName="FrikiTeamBDModel.Organizador">
+              <MappingFragment StoreEntitySet="Organizador">
+                <ScalarProperty Name="IDOrganizador" ColumnName="IDOrganizador" />
+                <ScalarProperty Name="NOrganizador" ColumnName="NOrganizador" />
+                <ScalarProperty Name="ApeOrganizador" ColumnName="ApeOrganizador" />
+                <ScalarProperty Name="Edad_Organizador" ColumnName="Edad_Organizador" />
+                <ScalarProperty Name="NTelefono" ColumnName="NTelefono" />
+                <ScalarProperty Name="Correo_Organizador" ColumnName="Correo_Organizador" />
+                <ScalarProperty Name="Contraseña_Organizador" ColumnName="Contraseña_Organizador" />
+                <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+                <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
