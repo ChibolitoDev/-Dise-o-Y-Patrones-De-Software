@@ -1,8 +1,8 @@
 ﻿using FrikiTeamWebApp.Models;
 
-namespace FrikiTeamWebApp.Repositorys
+namespace FrikiTeamWebApp.Services
 {
-    public interface IOrganizadorRepository : IRepository<Organizador>
+    public interface IOrganizadorService : IService<Organizador>
     {
          Organizador GetById(int id);
          bool Calificar(int id, int calificacion);
