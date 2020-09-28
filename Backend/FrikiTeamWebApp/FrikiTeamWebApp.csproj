@@ -265,6 +265,7 @@
     <Compile Include="Service\Implementacion\DistritoService.cs" />
     <Compile Include="Service\Implementacion\EventoService.cs" />
     <Compile Include="Service\Implementacion\EventoUsuarioCodigoService.cs" />
+    <Compile Include="Service\Implementacion\EventoUsuarioService.cs" />
     <Compile Include="Service\Implementacion\NumeroCasaService.cs" />
     <Compile Include="Service\Implementacion\OrganizadorService.cs" />
     <Compile Include="Service\INumeroCasaService.cs" />

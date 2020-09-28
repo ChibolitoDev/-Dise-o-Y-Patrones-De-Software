@@ -9,12 +9,23 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FrikiTeamWebApp.Models;
+using FrikiTeamWebApp.Service.Implementacion;
+using FrikiTeamWebApp.Services;
+using FrikiTeamWebApp.Services.Implementacion;
 
 namespace FrikiTeamWebApp.Controllers
 {
     public class Evento_UsuarioController : ApiController
     {
         private FrikiTeamBDEntities4 db = new FrikiTeamBDEntities4();
+        private readonly IEventoUsuarioService _eventoUsuarioService;
+        private readonly IEventoService _eventoService;
+
+        public Evento_UsuarioController(EventoUsuarioService eventoUsuarioService, EventoService eventoService)
+        {
+            this._eventoUsuarioService = eventoUsuarioService;
+            this._eventoService = eventoService;
+        }
 
         // GET: api/Evento_Usuario
         public IQueryable<Evento_Usuario> GetEvento_Usuario()
@@ -37,49 +48,25 @@ namespace FrikiTeamWebApp.Controllers
 
         // PUT: api/Evento_Usuario/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutEvento_Usuario(int id, Evento_Usuario evento_Usuario)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            if (id != evento_Usuario.IDEvento_Usuario)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(evento_Usuario).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!Evento_UsuarioExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
 
         // POST: api/Evento_Usuario
         [ResponseType(typeof(Evento_Usuario))]
         public IHttpActionResult PostEvento_Usuario(Evento_Usuario evento_Usuario)
         {
+            Evento evento = db.Evento.Find(evento_Usuario.Evento.IDEvento);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            if(evento_Usuario.Evento.NCupos != 0)
+            {
+                evento.NCupos =- 1;
+                _eventoService.Update(evento);
+                db.Evento_Usuario.Add(evento_Usuario);
+            }
 
-            db.Evento_Usuario.Add(evento_Usuario);
 
             try
             {

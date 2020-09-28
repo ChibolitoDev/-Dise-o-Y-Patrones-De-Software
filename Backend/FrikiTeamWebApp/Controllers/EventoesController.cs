@@ -8,32 +8,48 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.UI.WebControls;
 using FrikiTeamWebApp.Models;
+using FrikiTeamWebApp.Services;
+using FrikiTeamWebApp.Services.Implementacion;
 
 namespace FrikiTeamWebApp.Controllers
 {
     public class EventoesController : ApiController
     {
         private FrikiTeamBDEntities4 db = new FrikiTeamBDEntities4();
+        private IEventoService _eventoService;
+        private IOrganizadorService _organizadorService;
+        private IDistritoService _distritoService;
+
+        public EventoesController(DistritoService distritoService, OrganizadorService organizadorService, EventoService eventoService)
+        {
+            this._organizadorService = organizadorService;
+            this._distritoService = distritoService;
+            this._eventoService = eventoService;
+        }
 
         // GET: api/Eventoes
-        public IQueryable<Evento> GetEvento()
+        public IEnumerable<Evento> ListEventos()
         {
-            return db.Evento;
+            return _eventoService.GetAll();
         }
 
-        // GET: api/Eventoes/5
-        [ResponseType(typeof(Evento))]
-        public IHttpActionResult GetEvento(int id)
+        public IEnumerable<Evento> SearchByName(string name)
         {
-            Evento evento = db.Evento.Find(id);
-            if (evento == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(evento);
+            return _eventoService.FindByName(name);
         }
+
+        public IEnumerable<Evento> SearchByDistrito(string name)
+        {
+            return _eventoService.FindByDistrito(name);
+        }
+
+        public IEnumerable<Evento> SearchByCalle(string name)
+        {
+            return _eventoService.FindByDireccion(name);
+        }
+
 
         // PUT: api/Eventoes/5
         [ResponseType(typeof(void))]
@@ -79,8 +95,7 @@ namespace FrikiTeamWebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Evento.Add(evento);
-
+            _eventoService.save(evento);
             try
             {
                 db.SaveChanges();
@@ -110,7 +125,7 @@ namespace FrikiTeamWebApp.Controllers
                 return NotFound();
             }
 
-            db.Evento.Remove(evento);
+            _eventoService.Delete(id);
             db.SaveChanges();
 
             return Ok(evento);

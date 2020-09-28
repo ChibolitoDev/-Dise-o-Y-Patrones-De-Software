@@ -9,66 +9,28 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FrikiTeamWebApp.Models;
+using FrikiTeamWebApp.Services;
+using FrikiTeamWebApp.Services.Implementacion;
 
 namespace FrikiTeamWebApp.Controllers
 {
     public class CodigoEventoesController : ApiController
     {
         private FrikiTeamBDEntities4 db = new FrikiTeamBDEntities4();
+        private readonly ICodigoService _codigoService;
+        private readonly IEventoService _eventoService;
+        public CodigoEventoesController(CodigoService codigoService, EventoService eventoService)
+        {
+            this._codigoService = codigoService;
+            this._eventoService = eventoService;
+        }
 
         // GET: api/CodigoEventoes
-        public IQueryable<CodigoEvento> GetCodigoEvento()
+        public IEnumerable<CodigoEvento> GetCodigoEvento()
         {
-            return db.CodigoEvento;
+            return _codigoService.GetAll();
         }
 
-        // GET: api/CodigoEventoes/5
-        [ResponseType(typeof(CodigoEvento))]
-        public IHttpActionResult GetCodigoEvento(int id)
-        {
-            CodigoEvento codigoEvento = db.CodigoEvento.Find(id);
-            if (codigoEvento == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(codigoEvento);
-        }
-
-        // PUT: api/CodigoEventoes/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutCodigoEvento(int id, CodigoEvento codigoEvento)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != codigoEvento.IDCodigo)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(codigoEvento).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CodigoEventoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
 
         // POST: api/CodigoEventoes
         [ResponseType(typeof(CodigoEvento))]
@@ -79,11 +41,9 @@ namespace FrikiTeamWebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.CodigoEvento.Add(codigoEvento);
-
             try
             {
-                db.SaveChanges();
+                _codigoService.save(codigoEvento);
             }
             catch (DbUpdateException)
             {
@@ -100,20 +60,22 @@ namespace FrikiTeamWebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = codigoEvento.IDCodigo }, codigoEvento);
         }
 
-        // DELETE: api/CodigoEventoes/5
-        [ResponseType(typeof(CodigoEvento))]
-        public IHttpActionResult DeleteCodigoEvento(int id)
+        // DELETE: api/Evento_Usuario/5
+        [ResponseType(typeof(Evento_Usuario))]
+        public IHttpActionResult DeleteEvento_Codigo(int id)
         {
-            CodigoEvento codigoEvento = db.CodigoEvento.Find(id);
-            if (codigoEvento == null)
+            Evento_Usuario evento_Usuario = db.Evento_Usuario.Find(id);
+            Evento evento = db.Evento.Find(evento_Usuario.Evento.IDEvento);
+            if (evento_Usuario == null)
             {
                 return NotFound();
             }
-
-            db.CodigoEvento.Remove(codigoEvento);
+            evento.NCupos += 1;
+            _eventoService.Update(evento);
+            db.Evento_Usuario.Remove(evento_Usuario);
             db.SaveChanges();
 
-            return Ok(codigoEvento);
+            return Ok(evento_Usuario);
         }
 
         protected override void Dispose(bool disposing)
@@ -124,6 +86,8 @@ namespace FrikiTeamWebApp.Controllers
             }
             base.Dispose(disposing);
         }
+
+
 
         private bool CodigoEventoExists(int id)
         {

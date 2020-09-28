@@ -9,24 +9,33 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FrikiTeamWebApp.Models;
+using FrikiTeamWebApp.Services;
+using FrikiTeamWebApp.Services.Implementacion;
 
 namespace FrikiTeamWebApp.Controllers
 {
     public class OrganizadorsController : ApiController
     {
         private FrikiTeamBDEntities4 db = new FrikiTeamBDEntities4();
+        private readonly IOrganizadorService _organizadorservice;
+
+        public OrganizadorsController(OrganizadorService servicio)
+        {
+            this._organizadorservice = servicio;
+        }
 
         // GET: api/Organizadors
-        public IQueryable<Organizador> GetOrganizador()
+        [HttpGet]
+        public IEnumerable<Organizador> GetAction()
         {
-            return db.Organizador;
+            return _organizadorservice.GetAll();
         }
 
         // GET: api/Organizadors/5
         [ResponseType(typeof(Organizador))]
         public IHttpActionResult GetOrganizador(int id)
         {
-            Organizador organizador = db.Organizador.Find(id);
+            Organizador organizador = _organizadorservice.GetById(id);
             if (organizador == null)
             {
                 return NotFound();
@@ -34,6 +43,16 @@ namespace FrikiTeamWebApp.Controllers
 
             return Ok(organizador);
         }
+
+
+        // POST: api/Organizadors
+        [ResponseType(typeof(Organizador))]
+        public IHttpActionResult Calificar(int id, int calificacion)
+        {
+
+            return Ok(_organizadorservice.Calificar(id, calificacion));
+        }
+
 
         // PUT: api/Organizadors/5
         [ResponseType(typeof(void))]
@@ -79,8 +98,7 @@ namespace FrikiTeamWebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Organizador.Add(organizador);
-
+            _organizadorservice.save(organizador);
             try
             {
                 db.SaveChanges();
@@ -100,30 +118,6 @@ namespace FrikiTeamWebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = organizador.IDOrganizador }, organizador);
         }
 
-        // DELETE: api/Organizadors/5
-        [ResponseType(typeof(Organizador))]
-        public IHttpActionResult DeleteOrganizador(int id)
-        {
-            Organizador organizador = db.Organizador.Find(id);
-            if (organizador == null)
-            {
-                return NotFound();
-            }
-
-            db.Organizador.Remove(organizador);
-            db.SaveChanges();
-
-            return Ok(organizador);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
 
         private bool OrganizadorExists(int id)
         {

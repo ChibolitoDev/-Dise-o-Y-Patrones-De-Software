@@ -9,78 +9,58 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FrikiTeamWebApp.Models;
+using FrikiTeamWebApp.Repositorys;
 
 namespace FrikiTeamWebApp.Controllers
 {
     public class ClientesController : ApiController
     {
         private FrikiTeamBDEntities4 db = new FrikiTeamBDEntities4();
+        private readonly IClienteRepository _clienteservice;
+
+        public ClientesController(IClienteRepository servicio)
+        {
+            this._clienteservice = servicio;
+        }
 
         // GET: api/Clientes
-        public IQueryable<Cliente> GetCliente()
+        public IEnumerable<Cliente> GetCliente()
         {
-            return db.Cliente;
+            return _clienteservice.GetAll();
         }
 
         // GET: api/Clientes/5
         [ResponseType(typeof(Cliente))]
         public IHttpActionResult GetCliente(int id)
         {
-            Cliente cliente = db.Cliente.Find(id);
+            return Ok(_clienteservice.GetById(id));
+        }
+
+        // DELETE: api/Clientes/5
+        [ResponseType(typeof(Cliente))]
+        public IHttpActionResult DeleteCliente(int id)
+        {
+            Cliente cliente = _clienteservice.GetById(id);
             if (cliente == null)
             {
                 return NotFound();
             }
 
+            _clienteservice.Delete(id);
+            db.SaveChanges();
+
             return Ok(cliente);
         }
 
-        // PUT: api/Clientes/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutCliente(int id, Cliente cliente)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != cliente.IDCliente)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(cliente).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ClienteExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Clientes
         [ResponseType(typeof(Cliente))]
-        public IHttpActionResult PostCliente(Cliente cliente)
+        public IHttpActionResult AgregarCliente(Cliente cliente)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Cliente.Add(cliente);
-
+            _clienteservice.save(cliente);
             try
             {
                 db.SaveChanges();
@@ -99,23 +79,6 @@ namespace FrikiTeamWebApp.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = cliente.IDCliente }, cliente);
         }
-
-        // DELETE: api/Clientes/5
-        [ResponseType(typeof(Cliente))]
-        public IHttpActionResult DeleteCliente(int id)
-        {
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
-            {
-                return NotFound();
-            }
-
-            db.Cliente.Remove(cliente);
-            db.SaveChanges();
-
-            return Ok(cliente);
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
