@@ -1,0 +1,19 @@
+{
+  "FilePath": "d:\\Ciclo 5\\github\\-Dise-o-Y-Patrones-De-Software\\Backend\\FrikiTeamWebApp\\FrikiTeamWebApp.csproj",
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 703
+  },
+  "RootNamespace": null,
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}
