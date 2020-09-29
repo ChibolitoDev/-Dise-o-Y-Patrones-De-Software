@@ -95,7 +95,7 @@ namespace FrikiTeamWebApp.Repositorys.Implementacion
             try  
             {
                 foreach (Evento evento in context.Evento.ToList())
-                    if (evento.Distrito.Calle.Ncalle==Direccion)
+                    if (evento.NumeroCasa.Calle.NCalle==Direccion)
                     {
                         result.Add(evento);
                     }
@@ -114,7 +114,7 @@ namespace FrikiTeamWebApp.Repositorys.Implementacion
             try  
             {
                 foreach (Evento evento in context.Evento.ToList())
-                    if (evento.Distrito.NDistrito==Distrito)
+                    if (evento.NumeroCasa.Calle.Distrito.NDistrito==Distrito)
                     {
                         result.Add(evento);
                     }

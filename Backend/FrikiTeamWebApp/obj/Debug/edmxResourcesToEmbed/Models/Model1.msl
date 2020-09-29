@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="FrikiTeamBDModelStoreContainer" CdmEntityContainer="FrikiTeamBDEntities6">
+  <EntityContainerMapping StorageEntityContainer="FrikiTeamBDModelStoreContainer" CdmEntityContainer="FrikiTeamBDEntities8">
     <EntitySetMapping Name="Calle">
       <EntityTypeMapping TypeName="FrikiTeamBDModel.Calle">
         <MappingFragment StoreEntitySet="Calle">
           <ScalarProperty Name="IDCalle" ColumnName="IDCalle" />
-          <ScalarProperty Name="IDNumero" ColumnName="IDNumero" />
-          <ScalarProperty Name="Ncalle" ColumnName="Ncalle" />
+          <ScalarProperty Name="NCalle" ColumnName="NCalle" />
+          <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -20,7 +20,7 @@
           <ScalarProperty Name="NTelefono" ColumnName="NTelefono" />
           <ScalarProperty Name="Correo_Cliente" ColumnName="Correo_Cliente" />
           <ScalarProperty Name="Contraseña_Cliente" ColumnName="Contraseña_Cliente" />
-          <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+          <ScalarProperty Name="IDNumero" ColumnName="IDNumero" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -38,7 +38,6 @@
         <MappingFragment StoreEntitySet="Distrito">
           <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
           <ScalarProperty Name="NDistrito" ColumnName="NDistrito" />
-          <ScalarProperty Name="IDCalle" ColumnName="IDCalle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -47,7 +46,7 @@
         <MappingFragment StoreEntitySet="Evento">
           <ScalarProperty Name="IDEvento" ColumnName="IDEvento" />
           <ScalarProperty Name="DescripcionEvento" ColumnName="DescripcionEvento" />
-          <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+          <ScalarProperty Name="IDNumero" ColumnName="IDNumero" />
           <ScalarProperty Name="PrecioEntrada" ColumnName="PrecioEntrada" />
           <ScalarProperty Name="NCupos" ColumnName="NCupos" />
           <ScalarProperty Name="NEvento" ColumnName="NEvento" />
@@ -78,7 +77,8 @@
       <EntityTypeMapping TypeName="FrikiTeamBDModel.NumeroCasa">
         <MappingFragment StoreEntitySet="NumeroCasa">
           <ScalarProperty Name="IDNumero" ColumnName="IDNumero" />
-          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="NNumero" ColumnName="NNumero" />
+          <ScalarProperty Name="IDCalle" ColumnName="IDCalle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -92,7 +92,7 @@
           <ScalarProperty Name="NTelefono" ColumnName="NTelefono" />
           <ScalarProperty Name="Correo_Organizador" ColumnName="Correo_Organizador" />
           <ScalarProperty Name="Contraseña_Organizador" ColumnName="Contraseña_Organizador" />
-          <ScalarProperty Name="IDDistrito" ColumnName="IDDistrito" />
+          <ScalarProperty Name="IDNumero" ColumnName="IDNumero" />
           <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
         </MappingFragment>
       </EntityTypeMapping>

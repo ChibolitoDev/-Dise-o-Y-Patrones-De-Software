@@ -17,21 +17,13 @@ namespace FrikiTeamWebApp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Distrito()
         {
-            this.Cliente = new HashSet<Cliente>();
-            this.Organizador = new HashSet<Organizador>();
-            this.Evento = new HashSet<Evento>();
+            this.Calle = new HashSet<Calle>();
         }
     
         public int IDDistrito { get; set; }
         public string NDistrito { get; set; }
-        public int IDCalle { get; set; }
     
-        public virtual Calle Calle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cliente> Cliente { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Organizador> Organizador { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Evento> Evento { get; set; }
+        public virtual ICollection<Calle> Calle { get; set; }
     }
 }

@@ -5,8 +5,8 @@
       <PropertyRef Name="IDCalle" />
     </Key>
     <Property Name="IDCalle" Type="int4" Nullable="false" />
-    <Property Name="IDNumero" Type="int4" Nullable="false" />
-    <Property Name="Ncalle" Type="varchar" MaxLength="8000" />
+    <Property Name="NCalle" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IDDistrito" Type="int4" Nullable="false" />
   </EntityType>
   <EntityType Name="Cliente">
     <Key>
@@ -19,7 +19,7 @@
     <Property Name="NTelefono" Type="int4" Nullable="false" />
     <Property Name="Correo_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Contraseña_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="IDDistrito" Type="int4" Nullable="false" />
+    <Property Name="IDNumero" Type="int4" Nullable="false" />
   </EntityType>
   <EntityType Name="CodigoEvento">
     <Key>
@@ -35,7 +35,6 @@
     </Key>
     <Property Name="IDDistrito" Type="int4" Nullable="false" />
     <Property Name="NDistrito" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="IDCalle" Type="int4" Nullable="false" />
   </EntityType>
   <EntityType Name="Evento">
     <Key>
@@ -43,7 +42,7 @@
     </Key>
     <Property Name="IDEvento" Type="int4" Nullable="false" />
     <Property Name="DescripcionEvento" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="IDDistrito" Type="int4" Nullable="false" />
+    <Property Name="IDNumero" Type="int4" Nullable="false" />
     <Property Name="PrecioEntrada" Type="int4" Nullable="false" />
     <Property Name="NCupos" Type="int4" />
     <Property Name="NEvento" Type="varchar" MaxLength="50" Nullable="false" />
@@ -71,7 +70,8 @@
       <PropertyRef Name="IDNumero" />
     </Key>
     <Property Name="IDNumero" Type="int4" Nullable="false" />
-    <Property Name="Numero" Type="int4" Nullable="false" />
+    <Property Name="NNumero" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IDCalle" Type="int4" Nullable="false" />
   </EntityType>
   <EntityType Name="Organizador">
     <Key>
@@ -84,17 +84,17 @@
     <Property Name="NTelefono" Type="int4" Nullable="false" />
     <Property Name="Correo_Organizador" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Contraseña_Organizador" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="IDDistrito" Type="int4" Nullable="false" />
+    <Property Name="IDNumero" Type="int4" Nullable="false" />
     <Property Name="Calificacion" Type="int4" />
   </EntityType>
   <Association Name="IDCalle">
     <End Role="Calle" Type="Self.Calle" Multiplicity="1" />
-    <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+    <End Role="NumeroCasa" Type="Self.NumeroCasa" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Calle">
         <PropertyRef Name="IDCalle" />
       </Principal>
-      <Dependent Role="Distrito">
+      <Dependent Role="NumeroCasa">
         <PropertyRef Name="IDCalle" />
       </Dependent>
     </ReferentialConstraint>
@@ -125,36 +125,12 @@
   </Association>
   <Association Name="IDDistrito">
     <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
-    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <End Role="Calle" Type="Self.Calle" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Distrito">
         <PropertyRef Name="IDDistrito" />
       </Principal>
-      <Dependent Role="Cliente">
-        <PropertyRef Name="IDDistrito" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="IDDistrito1">
-    <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
-    <End Role="Organizador" Type="Self.Organizador" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Distrito">
-        <PropertyRef Name="IDDistrito" />
-      </Principal>
-      <Dependent Role="Organizador">
-        <PropertyRef Name="IDDistrito" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="IDDistrito2">
-    <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
-    <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Distrito">
-        <PropertyRef Name="IDDistrito" />
-      </Principal>
-      <Dependent Role="Evento">
+      <Dependent Role="Calle">
         <PropertyRef Name="IDDistrito" />
       </Dependent>
     </ReferentialConstraint>
@@ -197,12 +173,36 @@
   </Association>
   <Association Name="IDNumero">
     <End Role="NumeroCasa" Type="Self.NumeroCasa" Multiplicity="1" />
-    <End Role="Calle" Type="Self.Calle" Multiplicity="*" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NumeroCasa">
         <PropertyRef Name="IDNumero" />
       </Principal>
-      <Dependent Role="Calle">
+      <Dependent Role="Cliente">
+        <PropertyRef Name="IDNumero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IDNumero1">
+    <End Role="NumeroCasa" Type="Self.NumeroCasa" Multiplicity="1" />
+    <End Role="Organizador" Type="Self.Organizador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NumeroCasa">
+        <PropertyRef Name="IDNumero" />
+      </Principal>
+      <Dependent Role="Organizador">
+        <PropertyRef Name="IDNumero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IDNumero2">
+    <End Role="NumeroCasa" Type="Self.NumeroCasa" Multiplicity="1" />
+    <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NumeroCasa">
+        <PropertyRef Name="IDNumero" />
+      </Principal>
+      <Dependent Role="Evento">
         <PropertyRef Name="IDNumero" />
       </Dependent>
     </ReferentialConstraint>
@@ -231,7 +231,7 @@
     <EntitySet Name="Organizador" EntityType="Self.Organizador" Schema="public" store:Type="Tables" />
     <AssociationSet Name="IDCalle" Association="Self.IDCalle">
       <End Role="Calle" EntitySet="Calle" />
-      <End Role="Distrito" EntitySet="Distrito" />
+      <End Role="NumeroCasa" EntitySet="NumeroCasa" />
     </AssociationSet>
     <AssociationSet Name="IDCliente" Association="Self.IDCliente">
       <End Role="Cliente" EntitySet="Cliente" />
@@ -243,15 +243,7 @@
     </AssociationSet>
     <AssociationSet Name="IDDistrito" Association="Self.IDDistrito">
       <End Role="Distrito" EntitySet="Distrito" />
-      <End Role="Cliente" EntitySet="Cliente" />
-    </AssociationSet>
-    <AssociationSet Name="IDDistrito1" Association="Self.IDDistrito1">
-      <End Role="Distrito" EntitySet="Distrito" />
-      <End Role="Organizador" EntitySet="Organizador" />
-    </AssociationSet>
-    <AssociationSet Name="IDDistrito2" Association="Self.IDDistrito2">
-      <End Role="Distrito" EntitySet="Distrito" />
-      <End Role="Evento" EntitySet="Evento" />
+      <End Role="Calle" EntitySet="Calle" />
     </AssociationSet>
     <AssociationSet Name="IDEvento" Association="Self.IDEvento">
       <End Role="Evento" EntitySet="Evento" />
@@ -267,7 +259,15 @@
     </AssociationSet>
     <AssociationSet Name="IDNumero" Association="Self.IDNumero">
       <End Role="NumeroCasa" EntitySet="NumeroCasa" />
-      <End Role="Calle" EntitySet="Calle" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="IDNumero1" Association="Self.IDNumero1">
+      <End Role="NumeroCasa" EntitySet="NumeroCasa" />
+      <End Role="Organizador" EntitySet="Organizador" />
+    </AssociationSet>
+    <AssociationSet Name="IDNumero2" Association="Self.IDNumero2">
+      <End Role="NumeroCasa" EntitySet="NumeroCasa" />
+      <End Role="Evento" EntitySet="Evento" />
     </AssociationSet>
     <AssociationSet Name="IDOrganizador" Association="Self.IDOrganizador">
       <End Role="Organizador" EntitySet="Organizador" />

@@ -17,15 +17,15 @@ namespace FrikiTeamWebApp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Calle()
         {
-            this.Distrito = new HashSet<Distrito>();
+            this.NumeroCasa = new HashSet<NumeroCasa>();
         }
     
         public int IDCalle { get; set; }
-        public int IDNumero { get; set; }
-        public string Ncalle { get; set; }
+        public string NCalle { get; set; }
+        public int IDDistrito { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Distrito> Distrito { get; set; }
-        public virtual NumeroCasa NumeroCasa { get; set; }
+        public virtual ICollection<NumeroCasa> NumeroCasa { get; set; }
+        public virtual Distrito Distrito { get; set; }
     }
 }

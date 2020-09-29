@@ -27,10 +27,10 @@ namespace FrikiTeamWebApp.Models
         public int NTelefono { get; set; }
         public string Correo_Cliente { get; set; }
         public string Contraseña_Cliente { get; set; }
-        public int IDDistrito { get; set; }
+        public int IDNumero { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Evento_Usuario> Evento_Usuario { get; set; }
-        public virtual Distrito Distrito { get; set; }
+        public virtual NumeroCasa NumeroCasa { get; set; }
     }
 }

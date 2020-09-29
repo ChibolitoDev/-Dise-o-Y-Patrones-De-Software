@@ -27,11 +27,11 @@ namespace FrikiTeamWebApp.Models
         public int NTelefono { get; set; }
         public string Correo_Organizador { get; set; }
         public string Contraseña_Organizador { get; set; }
-        public int IDDistrito { get; set; }
+        public int IDNumero { get; set; }
         public Nullable<int> Calificacion { get; set; }
     
-        public virtual Distrito Distrito { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Evento> Evento { get; set; }
+        public virtual NumeroCasa NumeroCasa { get; set; }
     }
 }

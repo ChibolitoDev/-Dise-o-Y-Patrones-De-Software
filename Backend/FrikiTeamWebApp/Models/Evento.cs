@@ -23,7 +23,7 @@ namespace FrikiTeamWebApp.Models
     
         public int IDEvento { get; set; }
         public string DescripcionEvento { get; set; }
-        public int IDDistrito { get; set; }
+        public int IDNumero { get; set; }
         public int PrecioEntrada { get; set; }
         public Nullable<int> NCupos { get; set; }
         public string NEvento { get; set; }
@@ -32,9 +32,9 @@ namespace FrikiTeamWebApp.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CodigoEvento> CodigoEvento { get; set; }
-        public virtual Distrito Distrito { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Evento_Usuario> Evento_Usuario { get; set; }
+        public virtual NumeroCasa NumeroCasa { get; set; }
         public virtual Organizador Organizador { get; set; }
     }
 }
