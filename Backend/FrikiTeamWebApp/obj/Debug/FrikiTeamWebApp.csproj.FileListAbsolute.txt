@@ -240,3 +240,5 @@ C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\obj\Debug\FrikiTeamWebApp.csproj.CopyComplete
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\obj\Debug\FrikiTeamWebApp.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\obj\Debug\FrikiTeamWebApp.pdb
+C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\Swashbuckle.Core.dll
+C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\WebActivatorEx.dll
