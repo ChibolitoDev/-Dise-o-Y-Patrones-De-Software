@@ -190,7 +190,6 @@
     <Compile Include="Controllers\DistritoesController.cs" />
     <Compile Include="Controllers\EventoesController.cs" />
     <Compile Include="Controllers\Evento_UsuarioController.cs" />
-    <Compile Include="Controllers\Evento_Usuario_CodigoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NumeroCasasController.cs" />
     <Compile Include="Controllers\OrganizadorsController.cs" />
@@ -245,14 +244,12 @@
     <Compile Include="Repositorys\ICodigoEvento.cs" />
     <Compile Include="Repositorys\IDistritoRepository.cs" />
     <Compile Include="Repositorys\IEventoRepository.cs" />
-    <Compile Include="Repositorys\IEventoUsuarioCodigoRepository.cs" />
     <Compile Include="Repositorys\IEventoUsuarioRepository.cs" />
     <Compile Include="Repositorys\Implementacion\CalleRepository.cs" />
     <Compile Include="Repositorys\Implementacion\ClienteRepository.cs" />
     <Compile Include="Repositorys\Implementacion\CodigoEventoRepository.cs" />
     <Compile Include="Repositorys\Implementacion\DistritoRepository.cs" />
     <Compile Include="Repositorys\Implementacion\EventoRepository.cs" />
-    <Compile Include="Repositorys\Implementacion\EventoUsuarioCodigoRepository.cs" />
     <Compile Include="Repositorys\Implementacion\EventoUsuarioRepository.cs" />
     <Compile Include="Repositorys\Implementacion\NumeroCasaRepository.cs" />
     <Compile Include="Repositorys\Implementacion\OrganizadorRepository.cs" />
@@ -264,14 +261,12 @@
     <Compile Include="Service\ICodigoService.cs" />
     <Compile Include="Service\IDistritoService.cs" />
     <Compile Include="Service\IEventoService.cs" />
-    <Compile Include="Service\IEventoUsuarioCodigoService.cs" />
     <Compile Include="Service\IEventoUsuarioService.cs" />
     <Compile Include="Service\Implementacion\CalleService.cs" />
     <Compile Include="Service\Implementacion\ClienteService.cs" />
     <Compile Include="Service\Implementacion\CodigoService.cs" />
     <Compile Include="Service\Implementacion\DistritoService.cs" />
     <Compile Include="Service\Implementacion\EventoService.cs" />
-    <Compile Include="Service\Implementacion\EventoUsuarioCodigoService.cs" />
     <Compile Include="Service\Implementacion\EventoUsuarioService.cs" />
     <Compile Include="Service\Implementacion\NumeroCasaService.cs" />
     <Compile Include="Service\Implementacion\OrganizadorService.cs" />

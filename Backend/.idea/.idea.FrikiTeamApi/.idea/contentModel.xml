@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\user\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\user\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_FrikiTeamApi.-1598810947.00" t="ExcludeRecursive" />
+    <e p="C:\Users\user\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\user\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend" t="IncludeFlat">
+      <e p="FrikiTeamApi.sln" t="IncludeFlat" />
+      <e p="FrikiTeamWebApp" t="IncludeRecursive">
+        <e p="App_Data" t="Include" />
+        <e p="App_Start" t="Include">
+          <e p="BundleConfig.cs" t="Include" />
+          <e p="FilterConfig.cs" t="Include" />
+          <e p="RouteConfig.cs" t="Include" />
+          <e p="SwaggerConfig.cs" t="Include" />
+          <e p="WebApiConfig.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Content" t="Include">
+          <e p="bootstrap-theme.css" t="Include" />
+          <e p="bootstrap-theme.css.map" t="Include" />
+          <e p="bootstrap-theme.min.css" t="Include" />
+          <e p="bootstrap-theme.min.css.map" t="Include" />
+          <e p="bootstrap.css" t="Include" />
+          <e p="bootstrap.css.map" t="Include" />
+          <e p="bootstrap.min.css" t="Include" />
+          <e p="bootstrap.min.css.map" t="Include" />
+          <e p="Site.css" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="CallesController.cs" t="Include" />
+          <e p="ClientesController.cs" t="Include" />
+          <e p="CodigoEventoesController.cs" t="Include" />
+          <e p="DistritoesController.cs" t="Include" />
+          <e p="Evento_Usuario_CodigoController.cs" t="Include" />
+          <e p="Evento_UsuarioController.cs" t="Include" />
+          <e p="EventoesController.cs" t="Include" />
+          <e p="HomeController.cs" t="Include" />
+          <e p="NumeroCasasController.cs" t="Include" />
+          <e p="OrganizadorsController.cs" t="Include" />
+        </e>
+        <e p="favicon.ico" t="Include" />
+        <e p="fonts" t="Include">
+          <e p="glyphicons-halflings-regular.eot" t="Include" />
+          <e p="glyphicons-halflings-regular.svg" t="Include" />
+          <e p="glyphicons-halflings-regular.ttf" t="Include" />
+          <e p="glyphicons-halflings-regular.woff" t="Include" />
+          <e p="glyphicons-halflings-regular.woff2" t="Include" />
+        </e>
+        <e p="FrikiTeamWebApp.csproj" t="IncludeRecursive" />
+        <e p="Global.asax" t="Include" />
+        <e p="Global.asax.cs" t="Include" />
+        <e p="Models" t="Include">
+          <e p="Calle.cs" t="Include" />
+          <e p="Cliente.cs" t="Include" />
+          <e p="CodigoEvento.cs" t="Include" />
+          <e p="Distrito.cs" t="Include" />
+          <e p="Evento.cs" t="Include" />
+          <e p="Evento_Usuario.cs" t="Include" />
+          <e p="Evento_Usuario_Codigo.cs" t="Include" />
+          <e p="Model1.Context.cs" t="Include" />
+          <e p="Model1.Context.tt" t="Include" />
+          <e p="Model1.cs" t="Include" />
+          <e p="Model1.Designer.cs" t="Include" />
+          <e p="Model1.edmx" t="Include" />
+          <e p="Model1.edmx.diagram" t="Include" />
+          <e p="Model1.tt" t="Include" />
+          <e p="NumeroCasa.cs" t="Include" />
+          <e p="Organizador.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Repositorys" t="Include">
+          <e p="ICalleRepository.cs" t="Include" />
+          <e p="IClienteRepository.cs" t="Include" />
+          <e p="ICodigoEvento.cs" t="Include" />
+          <e p="IDistritoRepository.cs" t="Include" />
+          <e p="IEventoRepository.cs" t="Include" />
+          <e p="IEventoUsuarioCodigoRepository.cs" t="Include" />
+          <e p="IEventoUsuarioRepository.cs" t="Include" />
+          <e p="Implementacion" t="Include">
+            <e p="CalleRepository.cs" t="Include" />
+            <e p="ClienteRepository.cs" t="Include" />
+            <e p="CodigoEventoRepository.cs" t="Include" />
+            <e p="DistritoRepository.cs" t="Include" />
+            <e p="EventoRepository.cs" t="Include" />
+            <e p="EventoUsuarioCodigoRepository.cs" t="Include" />
+            <e p="EventoUsuarioRepository.cs" t="Include" />
+            <e p="NumeroCasaRepository.cs" t="Include" />
+            <e p="OrganizadorRepository.cs" t="Include" />
+          </e>
+          <e p="INumeroCasaRepository.cs" t="Include" />
+          <e p="IOrganizadorRepository.cs" t="Include" />
+          <e p="IRepository.cs" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="bootstrap.js" t="Include" />
+          <e p="bootstrap.min.js" t="Include" />
+          <e p="jquery-3.4.1.intellisense.js" t="Include" />
+          <e p="jquery-3.4.1.js" t="Include" />
+          <e p="jquery-3.4.1.min.js" t="Include" />
+          <e p="jquery-3.4.1.min.map" t="Include" />
+          <e p="jquery-3.4.1.slim.js" t="Include" />
+          <e p="jquery-3.4.1.slim.min.js" t="Include" />
+          <e p="jquery-3.4.1.slim.min.map" t="Include" />
+          <e p="jquery.validate-vsdoc.js" t="Include" />
+          <e p="jquery.validate.js" t="Include" />
+          <e p="jquery.validate.min.js" t="Include" />
+          <e p="jquery.validate.unobtrusive.js" t="Include" />
+          <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+          <e p="modernizr-2.8.3.js" t="Include" />
+        </e>
+        <e p="Service" t="Include">
+          <e p="ICalleService.cs" t="Include" />
+          <e p="IClienteService.cs" t="Include" />
+          <e p="ICodigoService.cs" t="Include" />
+          <e p="IDistritoService.cs" t="Include" />
+          <e p="IEventoService.cs" t="Include" />
+          <e p="IEventoUsuarioCodigoService.cs" t="Include" />
+          <e p="IEventoUsuarioService.cs" t="Include" />
+          <e p="Implementacion" t="Include">
+            <e p="CalleService.cs" t="Include" />
+            <e p="ClienteService.cs" t="Include" />
+            <e p="CodigoService.cs" t="Include" />
+            <e p="DistritoService.cs" t="Include" />
+            <e p="EventoService.cs" t="Include" />
+            <e p="EventoUsuarioCodigoService.cs" t="Include" />
+            <e p="EventoUsuarioService.cs" t="Include" />
+            <e p="NumeroCasaService.cs" t="Include" />
+            <e p="OrganizadorService.cs" t="Include" />
+          </e>
+          <e p="INumeroCasaService.cs" t="Include" />
+          <e p="IOrganizadorService.cs" t="Include" />
+          <e p="IServicec.cs" t="Include" />
+        </e>
+        <e p="Views" t="Include">
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Home" t="Include">
+            <e p="About.cshtml" t="Include" />
+            <e p="Contact.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="Error.cshtml" t="Include" />
+          </e>
+          <e p="Web.config" t="Include" />
+        </e>
+        <e p="Web.config" t="Include" />
+        <e p="Web.Debug.config" t="Include" />
+        <e p="Web.Release.config" t="Include" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
