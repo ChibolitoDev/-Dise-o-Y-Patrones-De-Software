@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FrikiTeamWebApp.Models;
-using FrikiTeamWebApp.Services;
-using FrikiTeamWebApp.Services.Implementacion;
 using FrikiTeamWebApp.UsuarioService.Service;
 using FrikiTeamWebApp.UsuarioService.Service.Implementacion;
 
@@ -19,11 +14,11 @@ namespace FrikiTeamWebApp.UsuarioService.Controller
     public class OrganizadorsController : ApiController
     {
         private FrikiTeamBDEntities4 db = new FrikiTeamBDEntities4();
-        private readonly IOrganizadorService _organizadorservice;
+        private readonly OrganizadorService _organizadorservice;
 
-        public OrganizadorsController(OrganizadorService servicio)
+        public OrganizadorsController()
         {
-            this._organizadorservice = servicio;
+            this._organizadorservice = new OrganizadorService(db);
         }
 
         // GET: api/Organizadors
@@ -56,68 +51,12 @@ namespace FrikiTeamWebApp.UsuarioService.Controller
         }
 
 
-        // PUT: api/Organizadors/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutOrganizador(int id, Organizador organizador)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != organizador.IDOrganizador)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(organizador).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrganizadorExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
 
         // POST: api/Organizadors
         [ResponseType(typeof(Organizador))]
         public IHttpActionResult PostOrganizador(Organizador organizador)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _organizadorservice.save(organizador);
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (OrganizadorExists(organizador.IDOrganizador))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = organizador.IDOrganizador }, organizador);
+            return Ok(_organizadorservice.save(organizador));
         }
 
 

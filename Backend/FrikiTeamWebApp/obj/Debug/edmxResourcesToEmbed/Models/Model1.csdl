@@ -32,7 +32,6 @@
     <Property Name="IDCodigo" Type="Int32" Nullable="false" />
     <Property Name="NumEvento" Type="Int32" Nullable="false" />
     <Property Name="IDEvento" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Evento_Usuario_Codigo" Relationship="Self.IDCodigoEvento" FromRole="CodigoEvento" ToRole="Evento_Usuario_Codigo" />
     <NavigationProperty Name="Evento" Relationship="Self.IDEvento" FromRole="CodigoEvento" ToRole="Evento" />
   </EntityType>
   <EntityType Name="Distrito">
@@ -69,17 +68,6 @@
     <Property Name="IDEvento" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Cliente" Relationship="Self.IDCliente" FromRole="Evento_Usuario" ToRole="Cliente" />
     <NavigationProperty Name="Evento" Relationship="Self.IDEvento1" FromRole="Evento_Usuario" ToRole="Evento" />
-    <NavigationProperty Name="Evento_Usuario_Codigo" Relationship="Self.IDEvento_Usuario" FromRole="Evento_Usuario" ToRole="Evento_Usuario_Codigo" />
-  </EntityType>
-  <EntityType Name="Evento_Usuario_Codigo">
-    <Key>
-      <PropertyRef Name="IEUC" />
-    </Key>
-    <Property Name="IEUC" Type="Int32" Nullable="false" />
-    <Property Name="IDEvento_Usuario" Type="Int32" Nullable="false" />
-    <Property Name="IDCodigoEvento" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="CodigoEvento" Relationship="Self.IDCodigoEvento" FromRole="Evento_Usuario_Codigo" ToRole="CodigoEvento" />
-    <NavigationProperty Name="Evento_Usuario" Relationship="Self.IDEvento_Usuario" FromRole="Evento_Usuario_Codigo" ToRole="Evento_Usuario" />
   </EntityType>
   <EntityType Name="NumeroCasa">
     <Key>
@@ -157,18 +145,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="IDCodigoEvento">
-    <End Role="CodigoEvento" Type="Self.CodigoEvento" Multiplicity="1" />
-    <End Role="Evento_Usuario_Codigo" Type="Self.Evento_Usuario_Codigo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CodigoEvento">
-        <PropertyRef Name="IDCodigo" />
-      </Principal>
-      <Dependent Role="Evento_Usuario_Codigo">
-        <PropertyRef Name="IDCodigoEvento" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="IDEvento">
     <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
     <End Role="CodigoEvento" Type="Self.CodigoEvento" Multiplicity="*" />
@@ -217,18 +193,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="IDEvento_Usuario">
-    <End Role="Evento_Usuario" Type="Self.Evento_Usuario" Multiplicity="1" />
-    <End Role="Evento_Usuario_Codigo" Type="Self.Evento_Usuario_Codigo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Evento_Usuario">
-        <PropertyRef Name="IDEvento_Usuario" />
-      </Principal>
-      <Dependent Role="Evento_Usuario_Codigo">
-        <PropertyRef Name="IDEvento_Usuario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="IDNumero1">
     <End Role="NumeroCasa" Type="Self.NumeroCasa" Multiplicity="1" />
     <End Role="Organizador" Type="Self.Organizador" Multiplicity="*" />
@@ -241,14 +205,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="FrikiTeamBDEntities8" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="FrikiTeamBDEntities9" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Calle" EntityType="Self.Calle" />
     <EntitySet Name="Cliente" EntityType="Self.Cliente" />
     <EntitySet Name="CodigoEvento" EntityType="Self.CodigoEvento" />
     <EntitySet Name="Distrito" EntityType="Self.Distrito" />
     <EntitySet Name="Evento" EntityType="Self.Evento" />
     <EntitySet Name="Evento_Usuario" EntityType="Self.Evento_Usuario" />
-    <EntitySet Name="Evento_Usuario_Codigo" EntityType="Self.Evento_Usuario_Codigo" />
     <EntitySet Name="NumeroCasa" EntityType="Self.NumeroCasa" />
     <EntitySet Name="Organizador" EntityType="Self.Organizador" />
     <AssociationSet Name="IDCalle" Association="Self.IDCalle">
@@ -267,10 +230,6 @@
       <End Role="NumeroCasa" EntitySet="NumeroCasa" />
       <End Role="Cliente" EntitySet="Cliente" />
     </AssociationSet>
-    <AssociationSet Name="IDCodigoEvento" Association="Self.IDCodigoEvento">
-      <End Role="CodigoEvento" EntitySet="CodigoEvento" />
-      <End Role="Evento_Usuario_Codigo" EntitySet="Evento_Usuario_Codigo" />
-    </AssociationSet>
     <AssociationSet Name="IDEvento" Association="Self.IDEvento">
       <End Role="Evento" EntitySet="Evento" />
       <End Role="CodigoEvento" EntitySet="CodigoEvento" />
@@ -286,10 +245,6 @@
     <AssociationSet Name="IDOrganizador" Association="Self.IDOrganizador">
       <End Role="Organizador" EntitySet="Organizador" />
       <End Role="Evento" EntitySet="Evento" />
-    </AssociationSet>
-    <AssociationSet Name="IDEvento_Usuario" Association="Self.IDEvento_Usuario">
-      <End Role="Evento_Usuario" EntitySet="Evento_Usuario" />
-      <End Role="Evento_Usuario_Codigo" EntitySet="Evento_Usuario_Codigo" />
     </AssociationSet>
     <AssociationSet Name="IDNumero1" Association="Self.IDNumero1">
       <End Role="NumeroCasa" EntitySet="NumeroCasa" />

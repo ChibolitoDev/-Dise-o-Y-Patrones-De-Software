@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
-using FrikiTeamWebApp.Repositorys;
 using FrikiTeamWebApp.Models;
-using FrikiTeamWebApp.Repositorys.Implementacion;
-using FrikiTeamWebApp.EventoService.Service;
 using FrikiTeamWebApp.EventoService.Repository;
+using FrikiTeamWebApp.EventoService.Repository.Implementacion;
 
 namespace FrikiTeamWebApp.EventoService.Service.Implementacion
 {
     public class CodigoService : ICodigoService
     {
-        private ICodigoEvento _codigoEvento;
+        private CodigoEventoRepository _codigoEvento;
+        private FrikiTeamBDEntities4 db;
 
-        public CodigoService(ICodigoEvento codigoEvento)
+        public CodigoService(FrikiTeamBDEntities4 db)
         {
-            this._codigoEvento=codigoEvento;
+            this.db = db;
+
+            this._codigoEvento=new CodigoEventoRepository(db);
         }
         
         public bool save(CodigoEvento entity)

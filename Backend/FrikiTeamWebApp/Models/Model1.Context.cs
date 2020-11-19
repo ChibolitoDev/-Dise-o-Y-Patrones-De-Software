@@ -31,7 +31,6 @@ namespace FrikiTeamWebApp.Models
         public virtual DbSet<Distrito> Distrito { get; set; }
         public virtual DbSet<Evento> Evento { get; set; }
         public virtual DbSet<Evento_Usuario> Evento_Usuario { get; set; }
-        public virtual DbSet<Evento_Usuario_Codigo> Evento_Usuario_Codigo { get; set; }
         public virtual DbSet<NumeroCasa> NumeroCasa { get; set; }
         public virtual DbSet<Organizador> Organizador { get; set; }
     }

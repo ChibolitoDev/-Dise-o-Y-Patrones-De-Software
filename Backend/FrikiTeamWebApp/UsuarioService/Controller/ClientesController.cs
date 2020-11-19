@@ -5,17 +5,18 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using FrikiTeamWebApp.Models;
 using FrikiTeamWebApp.UsuarioService.Repository;
+using FrikiTeamWebApp.UsuarioService.Service.Implementacion;
 
 namespace FrikiTeamWebApp.UsuarioService.Controller
 {
     public class ClientesController : ApiController
     {
         private FrikiTeamBDEntities4 db = new FrikiTeamBDEntities4();
-        private readonly IClienteRepository _clienteservice;
+        private readonly ClienteService _clienteservice ;
 
-        public ClientesController(IClienteRepository servicio)
+        public ClientesController()
         {
-            this._clienteservice = servicio;
+            this._clienteservice  = new ClienteService(db);
         }
 
         // GET: api/Clientes
@@ -31,48 +32,12 @@ namespace FrikiTeamWebApp.UsuarioService.Controller
             return Ok(_clienteservice.GetById(id));
         }
 
-        // DELETE: api/Clientes/5
-        [ResponseType(typeof(Cliente))]
-        public IHttpActionResult DeleteCliente(int id)
-        {
-            Cliente cliente = _clienteservice.GetById(id);
-            if (cliente == null)
-            {
-                return NotFound();
-            }
 
-            _clienteservice.Delete(id);
-            db.SaveChanges();
-
-            return Ok(cliente);
-        }
 
         [ResponseType(typeof(Cliente))]
         public IHttpActionResult AgregarCliente(Cliente cliente)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _clienteservice.save(cliente);
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (ClienteExists(cliente.IDCliente))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = cliente.IDCliente }, cliente);
+            return Ok(_clienteservice.save(cliente));
         }
         protected override void Dispose(bool disposing)
         {

@@ -14,18 +14,10 @@ namespace FrikiTeamWebApp.Models
     
     public partial class CodigoEvento
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CodigoEvento()
-        {
-            this.Evento_Usuario_Codigo = new HashSet<Evento_Usuario_Codigo>();
-        }
-    
         public int IDCodigo { get; set; }
         public int NumEvento { get; set; }
         public int IDEvento { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Evento_Usuario_Codigo> Evento_Usuario_Codigo { get; set; }
         public virtual Evento Evento { get; set; }
     }
 }

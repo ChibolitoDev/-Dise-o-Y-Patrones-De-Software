@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
 using FrikiTeamWebApp.Models;
-using FrikiTeamWebApp.UsuarioService.Repository;
+using FrikiTeamWebApp.UsuarioService.Repository.Implementacion;
 
 namespace FrikiTeamWebApp.UsuarioService.Service.Implementacion
 {
     public class ClienteService : IClienteService
     {
-        private IClienteRepository _clienteRepository;
+        private ClienteRepository _clienteRepository;
+        private FrikiTeamBDEntities4 db;
 
-        public ClienteService(IClienteRepository clienteRepository)
+        public ClienteService(FrikiTeamBDEntities4 db)
         {
-            this._clienteRepository=clienteRepository;
+            this.db = db;
+            this._clienteRepository= new ClienteRepository(db);
         }
         
         public bool save(Cliente entity)

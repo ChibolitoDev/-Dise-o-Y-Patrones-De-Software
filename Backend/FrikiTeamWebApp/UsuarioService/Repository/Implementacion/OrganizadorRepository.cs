@@ -18,13 +18,11 @@ namespace FrikiTeamWebApp.UsuarioService.Repository.Implementacion
             try
             {
                 context.Set<Organizador>().Add(entity);
-                context.SaveChanges();
             }
             catch (System.Exception)
             {
                 return false;
             }
-
             return true;        }
 
         public bool Update(Organizador entity)

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="FrikiTeamBDModelStoreContainer" CdmEntityContainer="FrikiTeamBDEntities8">
+  <EntityContainerMapping StorageEntityContainer="FrikiTeamBDModelStoreContainer" CdmEntityContainer="FrikiTeamBDEntities9">
     <EntitySetMapping Name="Calle">
       <EntityTypeMapping TypeName="FrikiTeamBDModel.Calle">
         <MappingFragment StoreEntitySet="Calle">
@@ -61,15 +61,6 @@
           <ScalarProperty Name="IDEvento_Usuario" ColumnName="IDEvento_Usuario" />
           <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
           <ScalarProperty Name="IDEvento" ColumnName="IDEvento" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Evento_Usuario_Codigo">
-      <EntityTypeMapping TypeName="FrikiTeamBDModel.Evento_Usuario_Codigo">
-        <MappingFragment StoreEntitySet="Evento_Usuario_Codigo">
-          <ScalarProperty Name="IEUC" ColumnName="IEUC" />
-          <ScalarProperty Name="IDEvento_Usuario" ColumnName="IDEvento_Usuario" />
-          <ScalarProperty Name="IDCodigoEvento" ColumnName="IDCodigoEvento" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

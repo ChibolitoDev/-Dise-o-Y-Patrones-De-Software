@@ -1,23 +1,19 @@
 ﻿using FrikiTeamWebApp.EventoService.Repository;
 using FrikiTeamWebApp.EventoService.Repository.Implementacion;
 using FrikiTeamWebApp.Models;
-using FrikiTeamWebApp.Repositorys;
-using FrikiTeamWebApp.Repositorys.Implementacion;
-using FrikiTeamWebApp.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace FrikiTeamWebApp.EventoService.Service.Implementacion
 {
     public class EventoUsuarioService : IEventoUsuarioService
     {
-        private IEventoUsuarioRepository repository;
+        private EventoUsuarioRepository repository;
+        private FrikiTeamBDEntities4 db;
 
-        public EventoUsuarioService(EventoUsuarioRepository repo)
+        public EventoUsuarioService(FrikiTeamBDEntities4 db)
         {
-            this.repository = repo;
+            this.db = db;
+            this.repository = new EventoUsuarioRepository(db);
         }
         public bool Delete(int id)
         {

@@ -6,8 +6,9 @@ namespace FrikiTeamWebApp.EventoService.Repository
 {
     public interface IEventoRepository : IRepository<Evento>
     {
-         List<Evento> FindByName(string Name);
-         List<Evento> FindByDireccion(string Direccion);
-         List<Evento> FindByDistrito(string Distrito);
+        
+        IEnumerable<Evento> FindByName(string Name);
+        IEnumerable<Evento> FindByDireccion(string Direccion);
+        IEnumerable<Evento> FindByDistrito(string Distrito);
     }
 }

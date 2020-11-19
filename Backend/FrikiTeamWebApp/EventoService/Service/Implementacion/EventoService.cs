@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FrikiTeamWebApp.EventoService.Repository;
+using FrikiTeamWebApp.EventoService.Repository.Implementacion;
 using FrikiTeamWebApp.Models;
 using FrikiTeamWebApp.Repositorys;
 
@@ -8,13 +10,16 @@ namespace FrikiTeamWebApp.EventoService.Service.Implementacion
     public class EventoService : IEventoService
     {
      
-        private IEventoRepository _eventoRepository;
+        private EventoRepository _eventoRepository;
+        private FrikiTeamBDEntities4 db;
 
-        public EventoService(IEventoRepository eventoRepository)
+        public EventoService(FrikiTeamBDEntities4 db)
         {
-            this._eventoRepository=eventoRepository;
+            this.db = db;
+            this._eventoRepository=new EventoRepository(db);
         }
         
+
         public bool save(Evento entity)
         {
             return _eventoRepository.save(entity);
@@ -34,17 +39,18 @@ namespace FrikiTeamWebApp.EventoService.Service.Implementacion
         {
             return _eventoRepository.GetAll();
         }
-        public List<Evento> FindByName(string Name)
+        public IEnumerable<Evento> FindByName(string Name)
         {
             return _eventoRepository.FindByName(Name);
         }
 
-        public List<Evento> FindByDireccion(string Direccion)
+
+        public IEnumerable<Evento> FindByDireccion(string Direccion)
         {
             return _eventoRepository.FindByDireccion(Direccion);
         }
 
-        public List<Evento> FindByDistrito(string Distrito)
+        public IEnumerable<Evento> FindByDistrito(string Distrito)
         {
             return _eventoRepository.FindByDistrito(Distrito);
         }

@@ -11,6 +11,8 @@ namespace FrikiTeamWebApp.UsuarioService.Repository.Implementacion
         public ClienteRepository (FrikiTeamBDEntities4 context) {
             this.context = context;
         }
+
+
         public bool save(Cliente entity)
         {
             try

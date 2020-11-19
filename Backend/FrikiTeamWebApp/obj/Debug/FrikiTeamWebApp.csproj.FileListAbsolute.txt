@@ -180,6 +180,7 @@ C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\Newtonsoft.Json.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\Npgsql.dll
+C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\Swashbuckle.Core.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\System.Buffers.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\System.Memory.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\System.Net.Http.Formatting.dll
@@ -198,6 +199,7 @@ C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\System.Web.WebPages.Deployment.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\System.Web.WebPages.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\System.Web.WebPages.Razor.dll
+C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\WebActivatorEx.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\WebGrease.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\EntityFramework.xml
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\EntityFramework.SqlServer.xml
@@ -235,10 +237,8 @@ C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\es\System.Net.Http.Formatting.resources.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\es\System.Web.Http.resources.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\es\System.Web.Http.WebHost.resources.dll
-C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\obj\Debug\FrikiTeamWebApp.csprojAssemblyReference.cache
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\obj\Debug\FrikiTeamWebApp.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\obj\Debug\FrikiTeamWebApp.csproj.CopyComplete
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\obj\Debug\FrikiTeamWebApp.dll
 C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\obj\Debug\FrikiTeamWebApp.pdb
-C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\Swashbuckle.Core.dll
-C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\bin\WebActivatorEx.dll
+C:\Users\user\Desktop\DiseñoDePatrones\Backend\FrikiTeamApi\-Dise-o-Y-Patrones-De-Software\Backend\FrikiTeamWebApp\obj\Debug\FrikiTeamWebApp.csprojAssemblyReference.cache

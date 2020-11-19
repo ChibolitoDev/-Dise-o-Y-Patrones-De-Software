@@ -2,16 +2,20 @@
 using FrikiTeamWebApp.Models;
 using FrikiTeamWebApp.Repositorys;
 using FrikiTeamWebApp.UsuarioService.Repository;
+using FrikiTeamWebApp.UsuarioService.Repository.Implementacion;
 
 namespace FrikiTeamWebApp.UsuarioService.Service.Implementacion
 {
     public class OrganizadorService : IOrganizadorService
     {
-        private IOrganizadorRepository _organizadorRepository;
+        private OrganizadorRepository _organizadorRepository;
+        private FrikiTeamBDEntities4 db;
 
-        public OrganizadorService(IOrganizadorRepository organizadorRepository)
+
+        public OrganizadorService(FrikiTeamBDEntities4 db)
         {
-            this._organizadorRepository=organizadorRepository;
+            this.db = db;
+            this._organizadorRepository= new OrganizadorRepository(this.db);
         }
         public bool save(Organizador entity)
         {

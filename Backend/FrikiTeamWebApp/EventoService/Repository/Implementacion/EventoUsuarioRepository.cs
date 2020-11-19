@@ -18,7 +18,6 @@ namespace FrikiTeamWebApp.EventoService.Repository.Implementacion
             try
             {
                 context.Set<Evento_Usuario>().Add(entity);
-                context.SaveChanges();
             }
             catch (System.Exception)
             {

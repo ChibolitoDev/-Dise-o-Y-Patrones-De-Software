@@ -57,14 +57,6 @@
     <Property Name="IDCliente" Type="int4" Nullable="false" />
     <Property Name="IDEvento" Type="int4" Nullable="false" />
   </EntityType>
-  <EntityType Name="Evento_Usuario_Codigo">
-    <Key>
-      <PropertyRef Name="IEUC" />
-    </Key>
-    <Property Name="IEUC" Type="int4" Nullable="false" />
-    <Property Name="IDEvento_Usuario" Type="int4" Nullable="false" />
-    <Property Name="IDCodigoEvento" Type="int4" Nullable="false" />
-  </EntityType>
   <EntityType Name="NumeroCasa">
     <Key>
       <PropertyRef Name="IDNumero" />
@@ -111,18 +103,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="IDCodigoEvento">
-    <End Role="CodigoEvento" Type="Self.CodigoEvento" Multiplicity="1" />
-    <End Role="Evento_Usuario_Codigo" Type="Self.Evento_Usuario_Codigo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CodigoEvento">
-        <PropertyRef Name="IDCodigo" />
-      </Principal>
-      <Dependent Role="Evento_Usuario_Codigo">
-        <PropertyRef Name="IDCodigoEvento" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="IDDistrito">
     <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
     <End Role="Calle" Type="Self.Calle" Multiplicity="*" />
@@ -156,18 +136,6 @@
       </Principal>
       <Dependent Role="Evento_Usuario">
         <PropertyRef Name="IDEvento" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="IDEvento_Usuario">
-    <End Role="Evento_Usuario" Type="Self.Evento_Usuario" Multiplicity="1" />
-    <End Role="Evento_Usuario_Codigo" Type="Self.Evento_Usuario_Codigo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Evento_Usuario">
-        <PropertyRef Name="IDEvento_Usuario" />
-      </Principal>
-      <Dependent Role="Evento_Usuario_Codigo">
-        <PropertyRef Name="IDEvento_Usuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -226,7 +194,6 @@
     <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="public" store:Type="Tables" />
     <EntitySet Name="Evento" EntityType="Self.Evento" Schema="public" store:Type="Tables" />
     <EntitySet Name="Evento_Usuario" EntityType="Self.Evento_Usuario" Schema="public" store:Type="Tables" />
-    <EntitySet Name="Evento_Usuario_Codigo" EntityType="Self.Evento_Usuario_Codigo" Schema="public" store:Type="Tables" />
     <EntitySet Name="NumeroCasa" EntityType="Self.NumeroCasa" Schema="public" store:Type="Tables" />
     <EntitySet Name="Organizador" EntityType="Self.Organizador" Schema="public" store:Type="Tables" />
     <AssociationSet Name="IDCalle" Association="Self.IDCalle">
@@ -236,10 +203,6 @@
     <AssociationSet Name="IDCliente" Association="Self.IDCliente">
       <End Role="Cliente" EntitySet="Cliente" />
       <End Role="Evento_Usuario" EntitySet="Evento_Usuario" />
-    </AssociationSet>
-    <AssociationSet Name="IDCodigoEvento" Association="Self.IDCodigoEvento">
-      <End Role="CodigoEvento" EntitySet="CodigoEvento" />
-      <End Role="Evento_Usuario_Codigo" EntitySet="Evento_Usuario_Codigo" />
     </AssociationSet>
     <AssociationSet Name="IDDistrito" Association="Self.IDDistrito">
       <End Role="Distrito" EntitySet="Distrito" />
@@ -252,10 +215,6 @@
     <AssociationSet Name="IDEvento1" Association="Self.IDEvento1">
       <End Role="Evento" EntitySet="Evento" />
       <End Role="Evento_Usuario" EntitySet="Evento_Usuario" />
-    </AssociationSet>
-    <AssociationSet Name="IDEvento_Usuario" Association="Self.IDEvento_Usuario">
-      <End Role="Evento_Usuario" EntitySet="Evento_Usuario" />
-      <End Role="Evento_Usuario_Codigo" EntitySet="Evento_Usuario_Codigo" />
     </AssociationSet>
     <AssociationSet Name="IDNumero" Association="Self.IDNumero">
       <End Role="NumeroCasa" EntitySet="NumeroCasa" />

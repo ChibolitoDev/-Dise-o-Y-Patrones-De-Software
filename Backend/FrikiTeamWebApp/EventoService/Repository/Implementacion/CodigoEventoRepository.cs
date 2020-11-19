@@ -17,7 +17,6 @@ namespace FrikiTeamWebApp.EventoService.Repository.Implementacion
             try
             {
                 context.Set<CodigoEvento>().Add(entity);
-                context.SaveChanges();
             }
             catch (System.Exception)
             {

@@ -19,6 +19,23 @@ namespace FrikiTeamWebApp
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                     name: "ActionApi",
+                     routeTemplate: "api/{controller}/{action}/{id}",
+                     defaults: new { action = "SearchByName", id = RouteParameter.Optional }
+                 );
+
+            config.Routes.MapHttpRoute(
+                     name: "ActionApi2",
+                     routeTemplate: "api/{controller}/{action}/{id}",
+                     defaults: new { action = "SearchByDistrito", id = RouteParameter.Optional }
+                 );
+            config.Routes.MapHttpRoute(
+                     name: "ActionApi3",
+                     routeTemplate: "api/{controller}/{action}/{id}",
+                     defaults: new { action = "SearchByCalle", id = RouteParameter.Optional }
+                 );
         }
     }
 }

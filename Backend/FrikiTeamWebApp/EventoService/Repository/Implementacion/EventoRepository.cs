@@ -18,13 +18,11 @@ namespace FrikiTeamWebApp.EventoService.Repository.Implementacion
             try
             {
                 context.Set<Evento>().Add(entity);
-                context.SaveChanges();
             }
             catch (System.Exception)
             {
                 return false;
             }
-
             return true;
         }
 
@@ -69,7 +67,7 @@ namespace FrikiTeamWebApp.EventoService.Repository.Implementacion
             }
             return result;         }
 
-        public List<Evento> FindByName(string Name)
+        public IEnumerable<Evento> FindByName(string Name)
         {
             var result = new List<Evento>();
             try  
@@ -82,14 +80,13 @@ namespace FrikiTeamWebApp.EventoService.Repository.Implementacion
             }
             catch (System.Exception)
             {
-                throw  new Exception("No se encontraron servicios de esa categoria");
-                return result;
+                ;
             }
             return result;
             
         }
 
-        public List<Evento> FindByDireccion(string Direccion)
+        public IEnumerable<Evento> FindByDireccion(string Direccion)
         {
             var result = new List<Evento>();
             try  
@@ -102,13 +99,13 @@ namespace FrikiTeamWebApp.EventoService.Repository.Implementacion
             }
             catch (System.Exception)
             {
-                throw  new Exception("No se encontraron servicios de esa direccion");
+              
             }
             return result;
             
         }
 
-        public List<Evento> FindByDistrito(string Distrito)
+        public IEnumerable<Evento> FindByDistrito(string Distrito)
         {
             var result = new List<Evento>();
             try  
@@ -121,7 +118,6 @@ namespace FrikiTeamWebApp.EventoService.Repository.Implementacion
             }
             catch (System.Exception)
             {
-                throw  new Exception("No se encontraron servicios de ese distrito");
             }
             return result;        }
     }
